@@ -6,7 +6,13 @@ return {
     config = function()
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>sf", builtin.find_files, {})
-      vim.keymap.set("n", "<leader>sg", builtin.live_grep, {})
+
+      vim.keymap.set("n", 'gd', require('telescope.builtin').lsp_definitions, {})
+      vim.keymap.set("n", 'gr', require('telescope.builtin').lsp_references, {})
+      vim.keymap.set("n", 'gI', require('telescope.builtin').lsp_implementations, {})
+      vim.keymap.set("n", '<leader>D', require('telescope.builtin').lsp_type_definitions,{})
+      vim.keymap.set("n", '<leader>ds', require('telescope.builtin').lsp_document_symbols,{})
+
     end,
   },
   {
@@ -16,27 +22,10 @@ return {
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown {
-              -- even more opts
             }
-
-            -- pseudo code / specification for writing custom displays, like the one
-            -- for "codeactions"
-            -- specific_opts = {
-            --   [kind] = {
-            --     make_indexed = function(items) -> indexed_items, width,
-            --     make_displayer = function(widths) -> displayer
-            --     make_display = function(displayer) -> function(e)
-            --     make_ordinal = function(e) -> string
-            --   },
-            --   -- for example to disable the custom builtin "codeactions" display
-            --      do the following
-            --   codeactions = false,
-            -- }
           }
         }
       }
-      -- To get ui-select loaded and working with telescope, you need to call
-      -- load_extension, somewhere after setup function:
       require("telescope").load_extension("ui-select")
     end
   },
