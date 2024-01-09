@@ -11,7 +11,15 @@ return {
 				ensure_installed = { "lua_ls", "gopls", "templ" },
 				handlers = {
 					function(server_name)
-						require("lspconfig")[server_name].setup {}
+						if server_name == "html" then
+							require("lspconfig")[server_name].setup({
+								filetypes = { "html", "templ" },
+							})
+						end
+
+						if server_name ~= "html" then
+							require("lspconfig")[server_name].setup {}
+						end
 					end
 				},
 			})
