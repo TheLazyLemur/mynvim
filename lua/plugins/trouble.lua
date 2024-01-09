@@ -24,10 +24,18 @@ return {
 			require("trouble").toggle("loclist")
 		end
 
-		vim.keymap.set("n", "<leader>xx", default, {})
-		vim.keymap.set("n", "<leader>xw", workspace, {})
-		vim.keymap.set("n", "<leader>xd", document, {})
-		vim.keymap.set("n", "<leader>xq", quickfix, {})
-		vim.keymap.set("n", "<leader>xl", loclist, {})
+
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("LspTrouble", {}),
+			callback = function(ev)
+				local opts = { buffer = ev.buf }
+
+				vim.keymap.set("n", "<leader>xx", default, opts)
+				vim.keymap.set("n", "<leader>xw", workspace, opts)
+				vim.keymap.set("n", "<leader>xd", document, opts)
+				vim.keymap.set("n", "<leader>xq", quickfix, opts)
+				vim.keymap.set("n", "<leader>xl", loclist, opts)
+			end
+		})
 	end
 }

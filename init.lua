@@ -15,7 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	"tpope/vim-sleuth",
+	{ import = "core" },
 	{ import = "plugins" }
 }
 local opts = {}
