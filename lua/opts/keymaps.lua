@@ -1,39 +1,39 @@
-local function setKeymap(m, l, r, o)
-	vim.api.nvim_set_keymap(m, l, r, o)
+local function setKeymap(m, l, r)
+	local opts = {
+		noremap = true,
+		silent = true,
+	}
+
+	vim.api.nvim_set_keymap(m, l, r, opts)
 end
 
-local opts = {
-	noremap = true,
-	silent = true,
-}
-
-setKeymap("", "<Space>", "<Nop>", opts)
+setKeymap("", "<Space>", "<Nop>")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-setKeymap("n", "<C-h>", "<C-w>h", opts)
-setKeymap("n", "<C-j>", "<C-w>j", opts)
-setKeymap("n", "<C-k>", "<C-w>k", opts)
-setKeymap("n", "<C-l>", "<C-w>l", opts)
+setKeymap("n", "<C-h>", "<C-w>h")
+setKeymap("n", "<C-j>", "<C-w>j")
+setKeymap("n", "<C-k>", "<C-w>k")
+setKeymap("n", "<C-l>", "<C-w>l")
 
-setKeymap("n", "<C-Up>", ":resize -2<CR>", opts)
-setKeymap("n", "<C-Down>", ":resize +2<CR>", opts)
-setKeymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-setKeymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+setKeymap("n", "<C-Up>", ":resize -2<CR>")
+setKeymap("n", "<C-Down>", ":resize +2<CR>")
+setKeymap("n", "<C-Left>", ":vertical resize -2<CR>")
+setKeymap("n", "<C-Right>", ":vertical resize +2<CR>")
 
-setKeymap("n", "<S-l>", ":bnext<CR>", opts)
-setKeymap("n", "<S-h>", ":bprevious<CR>", opts)
+setKeymap("n", "<S-l>", ":bnext<CR>")
+setKeymap("n", "<S-h>", ":bprevious<CR>")
 
-setKeymap("v", "<", "<gv", opts)
-setKeymap("v", ">", ">gv", opts)
+setKeymap("v", "<", "<gv")
+setKeymap("v", ">", ">gv")
 
-setKeymap("v", "<A-j>", ":m .+1<CR>==", opts)
-setKeymap("v", "<A-k>", ":m .-2<CR>==", opts)
-setKeymap("v", "p", '"_dP', opts)
+setKeymap("v", "<A-j>", ":m .+1<CR>==")
+setKeymap("v", "<A-k>", ":m .-2<CR>==")
+setKeymap("v", "p", '"_dP')
 
 
-setKeymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-setKeymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-setKeymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-setKeymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+setKeymap("x", "J", ":move '>+1<CR>gv-gv")
+setKeymap("x", "K", ":move '<-2<CR>gv-gv")
+setKeymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
+setKeymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
