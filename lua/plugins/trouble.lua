@@ -28,13 +28,14 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("LspTrouble", {}),
 			callback = function(ev)
+				local setKeymap = require("utils").SetKeymapWithOpts
 				local opts = { buffer = ev.buf }
 
-				vim.keymap.set("n", "<leader>xx", default, opts)
-				vim.keymap.set("n", "<leader>xw", workspace, opts)
-				vim.keymap.set("n", "<leader>xd", document, opts)
-				vim.keymap.set("n", "<leader>xq", quickfix, opts)
-				vim.keymap.set("n", "<leader>xl", loclist, opts)
+				setKeymap("n", "<leader>xx", default, opts)
+				setKeymap("n", "<leader>xw", workspace, opts)
+				setKeymap("n", "<leader>xd", document, opts)
+				setKeymap("n", "<leader>xq", quickfix, opts)
+				setKeymap("n", "<leader>xl", loclist, opts)
 			end
 		})
 	end

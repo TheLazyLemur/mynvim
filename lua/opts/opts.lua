@@ -1,3 +1,9 @@
+local setKeymap = require("utils").SetKeymap
+
+setKeymap("", "<Space>", "<Nop>")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local options = {
 	backup = false,
 	clipboard = "unnamedplus",
