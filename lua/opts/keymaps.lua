@@ -21,23 +21,20 @@ setKeymap("v", "<A-j>", ":m .+1<CR>==")
 setKeymap("v", "<A-k>", ":m .-2<CR>==")
 setKeymap("v", "p", '"_dP')
 
-
 setKeymap("x", "J", ":move '>+1<CR>gv-gv")
 setKeymap("x", "K", ":move '<-2<CR>gv-gv")
 setKeymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
 setKeymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
 
+-- Plugin keymaps
 
 setKeymap("n", "<leader>oo", ":<c-u>lua require('ollama').prompt()<cr>")
 setKeymap("v", "<leader>oo", ":<c-u>lua require('ollama').prompt()<cr>")
-
-
 
 setKeymapWithOpts('i', '<C-f>', function() return vim.fn['codeium#Accept']() end, { expr = true })
 setKeymapWithOpts('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
 setKeymapWithOpts('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
 setKeymapWithOpts('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-
 
 local builtin = require("telescope.builtin")
 setKeymap("n", "<leader>sf", builtin.find_files)
