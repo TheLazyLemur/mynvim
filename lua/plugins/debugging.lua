@@ -6,8 +6,8 @@ return {
 	},
 	config = function()
 		local dap, dapui = require("dap"), require("dapui")
+		dapui.setup({})
 
-		require("dapui").setup({})
 		if vim.fn.has("macunix") == 1 then
 			require("dap-go").setup({
 				delve = {
