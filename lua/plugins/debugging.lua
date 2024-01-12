@@ -7,11 +7,12 @@ return {
 	config = function()
 		local dap, dapui = require("dap"), require("dapui")
 
+
 		require("dapui").setup({})
 		if vim.fn.has("macunix") == 1 then
 			require("dap-go").setup({
 				delve = {
-					path = vim.fn.expand("$HOME") .. "/bin/dlv_wrapper.sh",
+					path = vim.api.nvim_list_runtime_paths()[1]  .. "/dlv_wrapper.sh",
 					initialize_timeout_sec = 20,
 					port = "${port}",
 					args = {},
