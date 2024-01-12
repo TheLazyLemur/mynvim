@@ -44,17 +44,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local opts = { buffer = ev.buf }
 
-		setKeymapWithOpts("n", "K", vim.lsp.buf.hover, opts)
-		setKeymapWithOpts("n", "gd", vim.lsp.buf.definition, opts)
-		setKeymapWithOpts("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-		setKeymapWithOpts("n", '<leader>rn', vim.lsp.buf.rename, opts)
-		setKeymapWithOpts("i", '<C-h>', vim.lsp.buf.signature_help, opts)
-
 		setKeymapWithOpts("n", 'gd', builtin.lsp_definitions, opts)
 		setKeymapWithOpts("n", 'gr', builtin.lsp_references, opts)
 		setKeymapWithOpts("n", 'gI', builtin.lsp_implementations, opts)
 		setKeymapWithOpts("n", '<leader>D', builtin.lsp_type_definitions, opts)
 		setKeymapWithOpts("n", '<leader>ds', builtin.lsp_document_symbols, opts)
+
+		setKeymapWithOpts("n", "K", vim.lsp.buf.hover, opts)
+		setKeymapWithOpts("n", "gd", vim.lsp.buf.definition, opts)
+		setKeymapWithOpts("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+		setKeymapWithOpts("n", '<leader>rn', vim.lsp.buf.rename, opts)
+		setKeymapWithOpts("i", '<C-h>', vim.lsp.buf.signature_help, opts)
 	end
 })
 
