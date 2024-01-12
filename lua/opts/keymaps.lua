@@ -55,12 +55,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		setKeymapWithOpts("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 		setKeymapWithOpts("n", '<leader>rn', vim.lsp.buf.rename, opts)
 		setKeymapWithOpts("i", '<C-h>', vim.lsp.buf.signature_help, opts)
+
+		setKeymapWithOpts("n", "<leader>dt", require("dap").toggle_breakpoint, opts)
+		setKeymapWithOpts("n", "<leader>dc", require("dap").continue, opts)
 	end
 })
 
 setKeymapWithOpts("n", "-", require("oil").open, { desc = "Open parent directory" })
-
-local function nearestTest()
-	require("neotest").run.run(vim.fn.expand("%"))
-end
-setKeymapWithOpts("n", "<leader>tt", nearestTest, { noremap = true, silent = true })
+setKeymapWithOpts("n", "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, { noremap = true, silent = true })

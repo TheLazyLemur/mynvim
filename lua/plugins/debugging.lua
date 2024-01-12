@@ -7,7 +7,6 @@ return {
 	config = function()
 		local dap, dapui = require("dap"), require("dapui")
 
-
 		require("dapui").setup({})
 		if vim.fn.has("macunix") == 1 then
 			require("dap-go").setup({
@@ -35,8 +34,5 @@ return {
 		dap.listeners.before.event_exited.dapui_config = function()
 			dapui.close()
 		end
-
-		vim.keymap.set("n", "<leader>dt", require("dap").toggle_breakpoint, {})
-		vim.keymap.set("n", "<leader>dc", require("dap").continue, {})
 	end
 }
