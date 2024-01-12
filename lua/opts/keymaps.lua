@@ -72,6 +72,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 setKeymapWithOpts("n", "-", require("oil").open, { desc = "Open parent directory" })
+
 setKeymapWithOpts("n", "<leader>tt", function()
 	require("neotest").run.run(vim.fn.expand("%"))
 end, { noremap = true, silent = true })
+
+setKeymap("n", "s", function()
+	require("flash").jump()
+end)
+
+setKeymap("x", "s", function()
+	require("flash").jump()
+end)
+
+setKeymap("o", "s", function()
+	require("flash").jump()
+end)
+
+setKeymap("n", "S", function()
+	require("flash").treesitter()
+end)
+
+setKeymap("x", "S", function()
+	require("flash").treesitter()
+end)
+
+setKeymap("o", "S", function()
+	require("flash").treesitter()
+end)
+
+setKeymap("c", "<c-s>", function()
+	require("flash").toggle()
+end)

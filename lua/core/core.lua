@@ -10,7 +10,7 @@ return {
 	},
 	{
 		"numToStr/Comment.nvim",
-		lazy = false,
+		event = "InsertEnter",
 		config = function()
 			require("Comment").setup()
 		end,
