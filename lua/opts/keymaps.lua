@@ -108,3 +108,5 @@ end)
 setKeymap("c", "<c-s>", function()
 	require("flash").toggle()
 end)
+
+setKeymap("n", "<leader>u", function() require("undotree").toggle() end)
