@@ -45,8 +45,14 @@ setKeymapWithOpts("i", "<c-x>", function()
 end, { expr = true })
 
 local builtin = require("telescope.builtin")
+setKeymap("n", "<leader>/", builtin.current_buffer_fuzzy_find)
+setKeymap("n", "<leader>sb", builtin.buffers)
 setKeymap("n", "<leader>sf", builtin.find_files)
 setKeymap("n", "<leader>sg", builtin.live_grep)
+setKeymap("n", "<leader>sw", builtin.grep_string)
+setKeymap("n", "<leader>ss", builtin.git_status)
+setKeymap("n", "<leader>sc", builtin.git_commits)
+setKeymap("n", "<leader>sr", builtin.resume)
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("Lsp", {}),
 	callback = function(ev)
@@ -109,4 +115,6 @@ setKeymap("c", "<c-s>", function()
 	require("flash").toggle()
 end)
 
-setKeymap("n", "<leader>u", function() require("undotree").toggle() end)
+setKeymap("n", "<leader>u", function()
+	require("undotree").toggle()
+end)
