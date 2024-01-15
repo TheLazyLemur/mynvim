@@ -64,8 +64,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		setKeymapWithOpts("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		setKeymapWithOpts("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 
-		setKeymapWithOpts("n", "<leader>dt", require("dap").toggle_breakpoint, opts)
-		setKeymapWithOpts("n", "<leader>dc", require("dap").continue, opts)
+		setKeymapWithOpts("n", "<leader>b", require("dap").toggle_breakpoint, opts)
+		setKeymapWithOpts("n", "<F2>", require("dap").step_over, opts)
+		setKeymapWithOpts("n", "<F3>", require("dap").step_into, opts)
+		setKeymapWithOpts("n", "<F4>", require("dap").step_out, opts)
+		setKeymapWithOpts("n", "<F5>", require("dap").continue, opts)
+		setKeymapWithOpts("n", "<F12>", require("dap").terminate, opts)
 
 		setKeymapWithOpts("n", "<leader>gf", vim.lsp.buf.format, opts)
 	end,
