@@ -28,9 +28,11 @@ setKeymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
 
 -- Plugin keymaps
 
+-- Ollama
 setKeymap("n", "<leader>oo", ":<c-u>lua require('ollama').prompt()<cr>")
 setKeymap("v", "<leader>oo", ":<c-u>lua require('ollama').prompt()<cr>")
 
+-- Codium
 setKeymapWithOpts("i", "<C-f>", function()
 	return vim.fn["codeium#Accept"]()
 end, { expr = true })
@@ -44,6 +46,7 @@ setKeymapWithOpts("i", "<c-x>", function()
 	return vim.fn["codeium#Clear"]()
 end, { expr = true })
 
+-- Telescope
 local builtin = require("telescope.builtin")
 setKeymap("n", "<leader>/", builtin.current_buffer_fuzzy_find)
 setKeymap("n", "<leader>sb", builtin.buffers)
@@ -64,29 +67,33 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		setKeymapWithOpts("n", "<leader>D", builtin.lsp_type_definitions, opts)
 		setKeymapWithOpts("n", "<leader>ds", builtin.lsp_document_symbols, opts)
 
+		-- LSP
 		setKeymapWithOpts("n", "K", vim.lsp.buf.hover, opts)
 		setKeymapWithOpts("n", "gd", vim.lsp.buf.definition, opts)
 		setKeymapWithOpts("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 		setKeymapWithOpts("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		setKeymapWithOpts("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+		setKeymapWithOpts("n", "<leader>gf", vim.lsp.buf.format, opts)
 
+		-- DAP
 		setKeymapWithOpts("n", "<leader>b", require("dap").toggle_breakpoint, opts)
 		setKeymapWithOpts("n", "<F2>", require("dap").step_over, opts)
 		setKeymapWithOpts("n", "<F3>", require("dap").step_into, opts)
 		setKeymapWithOpts("n", "<F4>", require("dap").step_out, opts)
 		setKeymapWithOpts("n", "<F5>", require("dap").continue, opts)
 		setKeymapWithOpts("n", "<F12>", require("dap").terminate, opts)
-
-		setKeymapWithOpts("n", "<leader>gf", vim.lsp.buf.format, opts)
 	end,
 })
 
+-- Oil FS
 setKeymapWithOpts("n", "-", require("oil").open, { desc = "Open parent directory" })
 
+-- Neotest
 setKeymapWithOpts("n", "<leader>tt", function()
 	require("neotest").run.run(vim.fn.expand("%"))
 end, { noremap = true, silent = true })
 
+-- Flash
 setKeymap("n", "s", function()
 	require("flash").jump()
 end)
@@ -115,6 +122,7 @@ setKeymap("c", "<c-s>", function()
 	require("flash").toggle()
 end)
 
+-- Undotree
 setKeymap("n", "<leader>u", function()
 	require("undotree").toggle()
 end)
