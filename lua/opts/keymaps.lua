@@ -57,9 +57,9 @@ setKeymap("n", "<leader>ss", builtin.git_status)
 setKeymap("n", "<leader>sc", builtin.git_commits)
 setKeymap("n", "<leader>sr", builtin.resume)
 setKeymap("n", "<leader>fb", function()
-	vim.cmd[[
+	vim.cmd([[
 		:Telescope file_browser
-	]]
+	]])
 end)
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("Lsp", {}),
@@ -87,6 +87,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		setKeymapWithOpts("n", "<F4>", require("dap").step_out, opts)
 		setKeymapWithOpts("n", "<F5>", require("dap").continue, opts)
 		setKeymapWithOpts("n", "<F12>", require("dap").terminate, opts)
+
+		-- Trouble
+		setKeymapWithOpts("n", "<leader>xx", require("trouble").toggle, opts)
+		setKeymapWithOpts("n", "<leader>xw", function()
+			require("trouble").toggle("workspace_diagnostics")
+		end, opts)
+		setKeymapWithOpts("n", "<leader>xd", function()
+			require("trouble").toggle("document_diagnostics")
+		end, opts)
+		setKeymapWithOpts("n", "<leader>xq", function()
+			require("trouble").toggle("quickfix")
+		end, opts)
+		setKeymapWithOpts("n", "<leader>xl", function()
+			require("trouble").toggle("loclist")
+		end, opts)
 	end,
 })
 
@@ -131,3 +146,7 @@ end)
 setKeymap("n", "<leader>u", function()
 	require("undotree").toggle()
 end)
+
+-- Harpoon
+setKeymap("n", "<leader>ha", require("harpoon.mark").add_file)
+setKeymap("n", "<leader>hv", require("harpoon.ui").toggle_quick_menu)
