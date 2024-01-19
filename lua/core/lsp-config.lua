@@ -15,21 +15,19 @@ return {
 							require("lspconfig")[server_name].setup({
 								filetypes = { "html", "templ" },
 							})
+						else
+							require("lspconfig")[server_name].setup({})
 						end
-
-						if server_name ~= "html" then
-							require("lspconfig")[server_name].setup {}
-						end
-					end
+					end,
 				},
 			})
-		end
+		end,
 	},
 	{
-		'echasnovski/mini.completion',
+		"echasnovski/mini.completion",
 		version = false,
 		config = function()
-			require('mini.completion').setup()
-		end
+			require("mini.completion").setup()
+		end,
 	},
 }
