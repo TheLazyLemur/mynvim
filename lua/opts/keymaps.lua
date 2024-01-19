@@ -150,3 +150,8 @@ end)
 -- Harpoon
 setKeymap("n", "<leader>ha", require("harpoon.mark").add_file)
 setKeymap("n", "<leader>hv", require("harpoon.ui").toggle_quick_menu)
+
+-- Neotree
+setKeymap("n", "<leader>nt", function()
+	vim.cmd[[:NvimTreeFindFile]]
+end)

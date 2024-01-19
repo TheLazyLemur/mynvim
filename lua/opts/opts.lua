@@ -4,6 +4,11 @@ setKeymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.cmd([[
+	set winbar=%f
+	set laststatus=3
+]])
+
 local options = {
 	backup = false,
 	clipboard = "unnamedplus",
