@@ -1,8 +1,7 @@
 return {
 	"folke/trouble.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = {
-	},
+	opts = {},
 	config = function()
 		local function default()
 			require("trouble").toggle()
@@ -24,7 +23,6 @@ return {
 			require("trouble").toggle("loclist")
 		end
 
-
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("LspTrouble", {}),
 			callback = function(ev)
@@ -36,7 +34,7 @@ return {
 				setKeymap("n", "<leader>xd", document, opts)
 				setKeymap("n", "<leader>xq", quickfix, opts)
 				setKeymap("n", "<leader>xl", loclist, opts)
-			end
+			end,
 		})
-	end
+	end,
 }

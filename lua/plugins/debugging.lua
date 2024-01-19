@@ -11,7 +11,7 @@ return {
 		if vim.fn.has("macunix") == 1 then
 			require("dap-go").setup({
 				delve = {
-					path = vim.api.nvim_list_runtime_paths()[1]  .. "/dlv_wrapper.sh",
+					path = vim.api.nvim_list_runtime_paths()[1] .. "/dlv_wrapper.sh",
 					initialize_timeout_sec = 20,
 					port = "${port}",
 					args = {},
@@ -34,5 +34,5 @@ return {
 		dap.listeners.before.event_exited.dapui_config = function()
 			dapui.close()
 		end
-	end
+	end,
 }

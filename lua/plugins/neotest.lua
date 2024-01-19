@@ -10,6 +10,5 @@ return {
 				require("neotest-go")({}),
 			},
 		})
-	end
-
+	end,
 }
