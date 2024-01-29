@@ -120,9 +120,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Oil FS
--- setKeymapWithOpts("n", "-", require("oil").open, { desc = "Open parent directory" })
 setKeymapWithOpts("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-setKeymapWithOpts("n", "--", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+setKeymapWithOpts("n", "<leader>-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
 -- Neotest
 setKeymapWithOpts("n", "<leader>tt", function()
