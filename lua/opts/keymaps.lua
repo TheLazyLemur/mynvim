@@ -66,6 +66,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local opts = { buffer = ev.buf }
 
+		setKeymap("n", "<leader>rr", function()
+			vim.cmd([[
+				:LspRestart<CR>
+			]])
+		end)
+
 		setKeymapWithOpts("n", "gd", builtin.lsp_definitions, opts)
 		setKeymapWithOpts("n", "gr", builtin.lsp_references, opts)
 		setKeymapWithOpts("n", "gI", builtin.lsp_implementations, opts)
@@ -89,24 +95,34 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		setKeymapWithOpts("n", "<F12>", require("dap").terminate, opts)
 
 		-- Trouble
-		setKeymapWithOpts("n", "<leader>xx", require("trouble").toggle, opts)
-		setKeymapWithOpts("n", "<leader>xw", function()
+		local wsd = function()
 			require("trouble").toggle("workspace_diagnostics")
-		end, opts)
-		setKeymapWithOpts("n", "<leader>xd", function()
+		end
+
+		local dd = function()
 			require("trouble").toggle("document_diagnostics")
-		end, opts)
-		setKeymapWithOpts("n", "<leader>xq", function()
+		end
+
+		local qd = function()
 			require("trouble").toggle("quickfix")
-		end, opts)
-		setKeymapWithOpts("n", "<leader>xl", function()
+		end
+
+		local ld = function()
 			require("trouble").toggle("loclist")
-		end, opts)
+		end
+
+		setKeymapWithOpts("n", "<leader>xx", require("trouble").toggle, opts)
+		setKeymapWithOpts("n", "<leader>xw", wsd, opts)
+		setKeymapWithOpts("n", "<leader>xd", dd, opts)
+		setKeymapWithOpts("n", "<leader>xq", qd, opts)
+		setKeymapWithOpts("n", "<leader>xl", ld, opts)
 	end,
 })
 
 -- Oil FS
-setKeymapWithOpts("n", "-", require("oil").open, { desc = "Open parent directory" })
+-- setKeymapWithOpts("n", "-", require("oil").open, { desc = "Open parent directory" })
+setKeymapWithOpts("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+setKeymapWithOpts("n", "--", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
 -- Neotest
 setKeymapWithOpts("n", "<leader>tt", function()
@@ -153,5 +169,5 @@ setKeymap("n", "<leader>hv", require("harpoon.ui").toggle_quick_menu)
 
 -- Neotree
 setKeymap("n", "<leader>nt", function()
-	vim.cmd[[:NvimTreeFindFile]]
+	vim.cmd([[:NvimTreeFindFile]])
 end)
