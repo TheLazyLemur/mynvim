@@ -56,11 +56,6 @@ setKeymap("n", "<leader>sw", builtin.grep_string)
 setKeymap("n", "<leader>ss", builtin.git_status)
 setKeymap("n", "<leader>sc", builtin.git_commits)
 setKeymap("n", "<leader>sr", builtin.resume)
-setKeymap("n", "<leader>fb", function()
-	vim.cmd([[
-		:Telescope file_browser
-	]])
-end)
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("Lsp", {}),
 	callback = function(ev)
