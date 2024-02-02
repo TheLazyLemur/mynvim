@@ -36,13 +36,13 @@ setKeymap("v", "<leader>oo", ":<c-u>lua require('ollama').prompt()<cr>")
 setKeymapWithOpts("i", "<C-f>", function()
 	return vim.fn["codeium#Accept"]()
 end, { expr = true })
-setKeymapWithOpts("i", "<c-;>", function()
+setKeymapWithOpts("i", "<C-h>", function()
 	return vim.fn["codeium#CycleCompletions"](1)
 end, { expr = true })
-setKeymapWithOpts("i", "<c-,>", function()
+setKeymapWithOpts("i", "<C-j>", function()
 	return vim.fn["codeium#CycleCompletions"](-1)
 end, { expr = true })
-setKeymapWithOpts("i", "<c-x>", function()
+setKeymapWithOpts("i", "<C-x>", function()
 	return vim.fn["codeium#Clear"]()
 end, { expr = true })
 
@@ -165,3 +165,8 @@ setKeymap("n", "<leader>hv", require("harpoon.ui").toggle_quick_menu)
 setKeymap("n", "<leader>nt", function()
 	vim.cmd([[:NvimTreeFindFile]])
 end)
+
+-- Spectre
+setKeymapWithOpts("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', {
+	desc = "Toggle Spectre",
+})
